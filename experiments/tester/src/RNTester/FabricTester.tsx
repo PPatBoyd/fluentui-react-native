@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native';
 import { StealthButton, Text, Separator } from 'react-native-uifabric';
 import { registerThemes } from './CustomThemes';
 import { allTestComponents } from './TestComponents';
-import { fabricTesterStyles } from './styles';
+import { fabricTesterStyles } from './TestComponents/Common/styles';
 import { useTheme } from '@uifabricshared/theming-react-native';
 
 // uncomment the below lines to enable message spy

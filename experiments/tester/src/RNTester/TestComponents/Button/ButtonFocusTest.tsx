@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stack, Button, IFocusable } from 'react-native-uifabric';
-import { stackStyle } from '../TesterStyles';
+import { stackStyle } from '../Separator/TesterStyles';
 
 export const ButtonFocusTest: React.FunctionComponent<{}> = () => {
   const [state, setState] = React.useState({

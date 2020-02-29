@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { ButtonFocusTest } from './ButtonFocusTest';
-import { PressableTest } from './PressableTest';
-import { LinkTest } from './LinkTest.win32';
-import { SeparatorTest } from './SeparatorTest';
-import { ThemeTest } from './ThemeTest';
-import { FocusTrapTest } from './FocusTrapZoneTest';
+import { ButtonFocusTest } from './Button';
+import { CalloutTest } from './Callout';
+import { PressableTest } from './Pressable';
+import { LinkTest } from './Link';
+import { SeparatorTest } from './Separator';
+import { ThemeTest } from './Theme';
+import { FocusTrapTest } from './FocusTrapZone';
 import { PersonaCoinTest } from './PersonaCoin/PersonaCoinTest';
 import { PersonaTest } from './Persona/PersonaTest';
 
@@ -17,6 +18,10 @@ export const allTestComponents: TestDescription[] = [
   {
     name: 'Button Test',
     component: ButtonFocusTest
+  },
+  {
+    name: 'Callout Test',
+    component: CalloutTest
   },
   {
     name: 'Focus Trap Zone Test',

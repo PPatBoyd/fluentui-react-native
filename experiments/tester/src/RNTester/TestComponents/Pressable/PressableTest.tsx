@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as ReactNative from 'react-native';
 import { Stack, Text, Pressable, IPressableState } from 'react-native-uifabric';
 import { useHoverState, useFocusState, usePressState } from 'react-native-uifabric';
-import { Square } from './Square';
+import { Square } from '../Common/Square';
 import { ViewWin32, IViewWin32Props } from '@office-iss/react-native-win32';
 import { StyleSheet } from 'react-native';
 

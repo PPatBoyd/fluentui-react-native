@@ -2,7 +2,7 @@ import * as React from 'react';
 import { View, Text, Switch, TextInput } from 'react-native';
 import { IPersonaTokens, Persona } from 'react-native-uifabric';
 import { styles, michaelImageUrl } from './styles';
-import { styles as commonStyles } from '../Common/styles';
+import { commonTestStyles } from '../Common/styles';
 import { useTheme } from '@uifabricshared/theming-react-native';
 import { Slider } from '../Common/Slider';
 
@@ -61,7 +61,7 @@ export const CustomizeUsage: React.FunctionComponent<{}> = () => {
         </View>
 
         <TextInput
-          style={[commonStyles.textBox, textBoxBorderStyle]}
+          style={[commonTestStyles.textBoxStyle, textBoxBorderStyle]}
           placeholder="Background color"
           blurOnSubmit={true}
           onSubmitEditing={e => {
@@ -70,7 +70,7 @@ export const CustomizeUsage: React.FunctionComponent<{}> = () => {
         />
 
         <TextInput
-          style={[commonStyles.textBox, textBoxBorderStyle]}
+          style={[commonTestStyles.textBoxStyle, textBoxBorderStyle]}
           placeholder="Initials text color"
           blurOnSubmit={true}
           onSubmitEditing={e => {

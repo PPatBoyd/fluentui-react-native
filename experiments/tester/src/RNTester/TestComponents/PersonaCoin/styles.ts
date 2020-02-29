@@ -1,14 +1,16 @@
 import { StyleSheet } from 'react-native';
+import { fabricTesterStyles } from '../Common/styles';
 
 export const styles = StyleSheet.create({
+  ...fabricTesterStyles,
   root: {
     marginTop: 16,
     marginRight: 32,
     flexDirection: 'row',
     alignItems: 'flex-start'
   },
-  settings: {
-    flexGrow: 1
+  oneCoin: {
+    margin: 8
   },
   switch: {
     flexDirection: 'row',
@@ -18,14 +20,8 @@ export const styles = StyleSheet.create({
     marginVertical: 6,
     fontSize: 12
   },
-  section: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: '#0B6A0B',
-    marginTop: 12
-  },
-  oneCoin: {
-    margin: 8
+  settings: {
+    flexGrow: 1
   },
   slider: {
     marginVertical: 6
