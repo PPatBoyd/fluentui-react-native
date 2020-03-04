@@ -1,4 +1,5 @@
 export * from './Button/index';
+export * from './Callout/index';
 export * from './FocusTrapZone/index';
 export * from './Link/index';
 export * from './Persona/index';
