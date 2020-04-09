@@ -1,7 +1,28 @@
 import * as React from 'react';
-import { ScreenRect, Text, View } from 'react-native';
-import { Button, Callout, Separator } from '@fluentui/react-native';
+import { ScreenRect, Text, View, Picker } from 'react-native';
+import { Button, Callout, Separator, DirectionalHint } from '@fluentui/react-native';
 import { fabricTesterStyles } from '../Common/styles';
+
+const defaultValueText = 'Default';
+type WithDefaultText<T> = T | typeof defaultValueText;
+
+const allAlignments: WithDefaultText<DirectionalHint>[] = [
+  defaultValueText,
+  'leftTopEdge',
+  'leftCenter',
+  'leftBottomEdge',
+  'topLeftEdge',
+  'topAutoEdge',
+  'topCenter',
+  'topRightEdge',
+  'rightTopEdge',
+  'rightCenter',
+  'rightBottomEdge',
+  'bottomLeftEdge',
+  'bottomAutoEdge',
+  'bottomCenter',
+  'bottomRightEdge'
+];
 
 export const CalloutTest: React.FunctionComponent<{}> = () => {
   const [showStandardCallout, setShowStandardCallout] = React.useState(false);
@@ -53,21 +74,40 @@ export const CalloutTest: React.FunctionComponent<{}> = () => {
     setShowCustomizedCallout(false);
   }, [setIsCustomizedCalloutVisible, setShowCustomizedCallout]);
 
+  // Picker options
+  const [directionalHint, setDirectionalHint] = React.useState<WithDefaultText<DirectionalHint>>('bottomLeftEdge');
+
+  const onDirectionalHintChange = React.useCallback(value => setDirectionalHint(value), []);
+
   const myRect: ScreenRect = { screenX: 10, screenY: 10, width: 100, height: 100 };
   return (
     <View>
       <Text style={fabricTesterStyles.testSection}>Standard Usage</Text>
       <Separator />
       <View style={{ flexDirection: 'row' }}>
-        <Button content="Press for Callout" onClick={toggleShowStandardCallout} />
-        <Text>
-          <Text>Visibility: </Text>
-          {isStandardCalloutVisible ? <Text style={{ color: 'green' }}>Visible</Text> : <Text style={{ color: 'red' }}>Not Visible</Text>}
-        </Text>
+        <View style={{ flexDirection: 'column' }}>
+          <Picker prompt="DirectionalHint" selectedValue={directionalHint} onValueChange={onDirectionalHintChange}>
+            {allAlignments.map((size, index) => (
+              <Picker.Item label={size} key={index} value={size} />
+            ))}
+          </Picker>
+        </View>
+        <View style={{ flexDirection: 'column' }}>
+          <Button content="Press for Callout" onClick={toggleShowStandardCallout} />
+          <Text>
+            <Text>Visibility: </Text>
+            {isStandardCalloutVisible ? <Text style={{ color: 'green' }}>Visible</Text> : <Text style={{ color: 'red' }}>Not Visible</Text>}
+          </Text>
+        </View>
       </View>
 
       {showStandardCallout && (
-        <Callout anchorRect={myRect} onDismiss={onDismissStandardCallout} onShow={onShowStandardCallout}>
+        <Callout
+          anchorRect={myRect}
+          onDismiss={onDismissStandardCallout}
+          onShow={onShowStandardCallout}
+          directionalHint={directionalHint === defaultValueText ? undefined : directionalHint}
+        >
           <View style={{ height: 200, width: 400 }}>
             <Button content="test button please ignore" onClick={toggleShowStandardCallout} />
           </View>
