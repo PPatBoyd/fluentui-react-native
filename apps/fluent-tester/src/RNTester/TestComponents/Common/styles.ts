@@ -57,8 +57,6 @@ export const fabricTesterStyles = StyleSheet.create({
     flex: 1,
     flexGrow: 1,
     flexDirection: 'row',
-    minHeight: 550,
-    minWidth: 300,
     justifyContent: 'flex-start',
     alignItems: 'stretch',
     padding: 4

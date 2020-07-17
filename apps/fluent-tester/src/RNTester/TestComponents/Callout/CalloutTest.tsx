@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ScreenRect, Text, View, Switch, Picker } from 'react-native';
-import { Button, Callout, Separator, IFocusable, RestoreFocusEvent } from '@fluentui/react-native';
+import { TouchableOpacity, ScreenRect, Text, View, Switch, Picker, ScrollView } from 'react-native';
+import { Callout, Separator, RestoreFocusEvent } from '@fluentui/react-native';
 import { fabricTesterStyles } from '../Common/styles';
 import { CALLOUT_TESTPAGE } from './consts';
 
@@ -22,8 +22,8 @@ export const CalloutTest: React.FunctionComponent<{}> = () => {
   const redTargetRef = React.useRef<View>(null);
   const blueTargetRef = React.useRef<View>(null);
   const greenTargetRef = React.useRef<View>(null);
-  const decoyBtn1Ref = React.useRef<IFocusable>(null);
-  const decoyBtn2Ref = React.useRef<IFocusable>(null);
+  const decoyBtn1Ref = React.useRef(null);
+  const decoyBtn2Ref = React.useRef(null);
   const [anchorRef, setAnchorRef] = React.useState(redTargetRef);
 
   const toggleShowStandardCallout = React.useCallback(() => {
@@ -97,6 +97,23 @@ export const CalloutTest: React.FunctionComponent<{}> = () => {
 
   const myRect: ScreenRect = { screenX: 10, screenY: 10, width: 100, height: 100 };
 
+  const [countOfColors, setCountOfColors] = React.useState(1);
+
+  const renderColors = () => {
+    return (
+      <View>
+        <View style={{ height: 100, width: 100, backgroundColor: 'red', padding: 5 }} />
+        <View style={{ height: 100, width: 100, backgroundColor: 'green', padding: 5 }} />
+        <View style={{ height: 100, width: 100, backgroundColor: 'blue', padding: 5 }} />
+      </View>
+    );
+  };
+
+  const colorStrip = [];
+  for (let i = 0; i < countOfColors; i++) {
+    colorStrip.push(renderColors());
+  }
+
   return (
     <View>
       <Text style={fabricTesterStyles.testSection} testID={CALLOUT_TESTPAGE}>
@@ -153,7 +170,9 @@ export const CalloutTest: React.FunctionComponent<{}> = () => {
         <Separator vertical />
 
         <View style={{ flexDirection: 'column', paddingHorizontal: 5 }}>
-          <Button content="Press for Callout" onClick={toggleShowStandardCallout} />
+          <TouchableOpacity onPress={toggleShowStandardCallout}>
+            <Text>Press for Callout</Text>
+          </TouchableOpacity>
           <Text>
             <Text>Visibility: </Text>
             {isStandardCalloutVisible ? <Text style={{ color: 'green' }}>Visible</Text> : <Text style={{ color: 'red' }}>Not Visible</Text>}
@@ -172,8 +191,12 @@ export const CalloutTest: React.FunctionComponent<{}> = () => {
       <Separator />
 
       <View style={{ paddingVertical: 5 }}>
-        <Button componentRef={decoyBtn1Ref} content="Custom reFocus w/ focus in Callout" />
-        <Button componentRef={decoyBtn2Ref} content="Custom reFocus w/o focus in Callout" />
+        <TouchableOpacity ref={decoyBtn1Ref}>
+          <Text>asd</Text>
+        </TouchableOpacity>
+        <TouchableOpacity ref={decoyBtn2Ref}>
+          <Text>asdasd</Text>
+        </TouchableOpacity>
       </View>
 
       {showStandardCallout && (
@@ -192,7 +215,26 @@ export const CalloutTest: React.FunctionComponent<{}> = () => {
           }}
         >
           <View style={{ padding: 20 }}>
-            <Button content="click to change anchor" onClick={toggleCalloutRef} />
+            <ScrollView showsVerticalScrollIndicator style={{ flexDirection: 'column', minWidth: 200 }}>
+              <TouchableOpacity onPress={toggleCalloutRef}>
+                <Text>Change Anchor</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  setCountOfColors(countOfColors + 1);
+                }}
+              >
+                <Text>Click to Grow</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  setCountOfColors(countOfColors - 1);
+                }}
+              >
+                <Text>Click to Shrink</Text>
+              </TouchableOpacity>
+              {colorStrip}
+            </ScrollView>
           </View>
         </Callout>
       )}
@@ -201,7 +243,9 @@ export const CalloutTest: React.FunctionComponent<{}> = () => {
       <Separator />
 
       <View style={{ flexDirection: 'column', paddingVertical: 5 }}>
-        <Button content="Press for Callout" onClick={toggleShowCustomizedCallout} />
+        <TouchableOpacity onPress={toggleShowCustomizedCallout}>
+          <Text>asdasd</Text>
+        </TouchableOpacity>
         <Text selectable={true}>
           <Text>Visibility: </Text>
           {isCustomizedCalloutVisible ? <Text style={{ color: 'green' }}>Visible</Text> : <Text style={{ color: 'red' }}>Not Visible</Text>}
