@@ -1151,16 +1151,6 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@fluentui-react-native/focus-zone@>=0.2.1 <1.0.0":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@fluentui-react-native/focus-zone/-/focus-zone-0.2.1.tgz#700af921a4bcebcaca1056a0e00565f606858e25"
-  integrity sha512-gMUzyBY7JQgbkrTkJsUxKJhKr/arN1HZ2VIRMWl9zbqBPDttSaJkJkqwE6iR510dj1/Oxurl7ZUUX9DcO/f6XA==
-  dependencies:
-    "@fluentui-react-native/component-cache" "^1.0.3"
-    "@fluentui-react-native/interactive-hooks" ">=0.5.2 <1.0.0"
-    "@uifabricshared/foundation-composable" ">=0.6.75 <1.0.0"
-    "@uifabricshared/foundation-settings" ">=0.7.2 <1.0.0"
-
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -2465,10 +2455,10 @@
   resolved "https://registry.yarnpkg.com/@types/caseless/-/caseless-0.12.2.tgz#f65d3d6389e01eeb458bd54dc8f52b95a9463bc8"
   integrity sha512-6ckxMjBBD8URvjB6J3NcnuAn5Pkl7t3TizAg+xdlzzQGSPSmBcXf8KoIH0ua/i+tio+ZRUHEXp0HEmvaR4kt0w==
 
-"@types/cheerio@*":
-  version "0.22.18"
-  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.18.tgz#19018dceae691509901e339d63edf1e935978fe6"
-  integrity sha512-Fq7R3fINAPSdUEhOyjG4iVxgHrOnqDJbY0/BUuiN0pvD/rfmZWekVZnv+vcs8TtpA2XF50uv50LaE4EnpEL/Hw==
+"@types/cheerio@*", "@types/cheerio@^0.22.22":
+  version "0.22.22"
+  resolved "https://registry.yarnpkg.com/@types/cheerio/-/cheerio-0.22.22.tgz#ae71cf4ca59b8bbaf34c99af7a5d6c8894988f5f"
+  integrity sha512-05DYX4zU96IBfZFY+t3Mh88nlwSMtmmzSYaQkKN48T495VV1dkHSah6qYyDTN5ngaS0i0VonH37m+RuzSM0YiA==
   dependencies:
     "@types/node" "*"
 
@@ -7064,10 +7054,11 @@ enzyme-shallow-equal@^1.0.1, enzyme-shallow-equal@^1.0.4:
     object-is "^1.1.2"
 
 enzyme-to-json@^3.3.0, enzyme-to-json@^3.5.0:
-  version "3.5.0"
-  resolved "https://registry.npmjs.org/enzyme-to-json/-/enzyme-to-json-3.5.0.tgz#3d536f1e8fb50d972360014fe2bd64e6a672f7dd"
-  integrity sha512-clusXRsiaQhG7+wtyc4t7MU8N3zCOgf4eY9+CeSenYzKlFST4lxerfOvnWd4SNaToKhkuba+w6m242YpQOS7eA==
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.6.1.tgz#d60740950bc7ca6384dfe6fe405494ec5df996bc"
+  integrity sha512-15tXuONeq5ORoZjV/bUo2gbtZrN2IH+Z6DvL35QmZyKHgbY1ahn6wcnLd9Xv9OjiwbAXiiP8MRZwbZrCv1wYNg==
   dependencies:
+    "@types/cheerio" "^0.22.22"
     lodash "^4.17.15"
     react-is "^16.12.0"
 
