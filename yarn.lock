@@ -2596,10 +2596,10 @@
     cosmiconfig "^7.0.0"
     semver "^7.0.0"
 
-"@rnx-kit/config@^0.4.7":
-  version "0.4.7"
-  resolved "https://registry.yarnpkg.com/@rnx-kit/config/-/config-0.4.7.tgz#a6147aca5a93ebd5db8e7911556438cdf83b79db"
-  integrity sha512-bvO/oAD4i1aLKR/Sl9QucHwYbd9rnQnTM1JhgHO4pfiSD4eNm09ccEQKfF94HkiAYa8IBM67qb7RG+deFuoRRw==
+"@rnx-kit/config@^0.4.10":
+  version "0.4.10"
+  resolved "https://registry.yarnpkg.com/@rnx-kit/config/-/config-0.4.10.tgz#0884c1f23b2e04794f9e008b067267cbab257fb9"
+  integrity sha512-g/Z886BKwUvl6yh3hYVuC68tKP1bX/rkYw2zAitkX/dff5akrDne153cKKtNjunwjwgw+LDIN2uHBnH++uk9CA==
   dependencies:
     "@rnx-kit/console" "^1.0.2"
     cosmiconfig "^7.0.0"
@@ -2614,11 +2614,11 @@
     chalk "^4.1.0"
 
 "@rnx-kit/dep-check@^1.5.10", "@rnx-kit/dep-check@^1.5.9":
-  version "1.7.9"
-  resolved "https://registry.yarnpkg.com/@rnx-kit/dep-check/-/dep-check-1.7.9.tgz#8a0de52b96a145a7c25f7a3a8f5501695da280c9"
-  integrity sha512-DdOwFmRnLi+9oioyXKSrG5pVmhn/5aE7GBRByo2UMvop+BiE8zosI+4M2/TO3khY8YQBC4KqNqTJ1HNxNEepaQ==
+  version "1.8.8"
+  resolved "https://registry.yarnpkg.com/@rnx-kit/dep-check/-/dep-check-1.8.8.tgz#32c70d2d4c036c648243d2dd4866bd14214e9032"
+  integrity sha512-E6jgPD0RS/Q9VokDEZkSbHTJIsYwm55YKmNkK4/RhtOf4KWWKwcz6M3/NicID2OFIc7BxZfxZIEQFDpdwFXhcQ==
   dependencies:
-    "@rnx-kit/config" "^0.4.7"
+    "@rnx-kit/config" "^0.4.10"
     "@rnx-kit/console" "^1.0.2"
     "@rnx-kit/tools-language" "^1.1.1"
     "@rnx-kit/tools-node" "^1.1.3"
