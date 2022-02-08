@@ -1,6 +1,6 @@
 # Migrating from old to new compose
 
-The compose API off our components allows clients to supply new arguments for creating the control in order for them to meet their needs. In moving controls from the old to new framework, the compose API usage changes. The compose API has a large range of inputs and is very flexible. This guide will cover more common scenarios. If you need help with something not covered here, please open an issue on the repo.
+The compose API allows clients to supply new arguments for creating the control with specialized requirements. The second major version of the `[FluentUI composition framework?]` changes the compose API to `[purpose?]`. The compose API has a large range of inputs and is very flexible; this guide will cover more common scenarios. Please open an issue on the repo if additional examples of migrating to the `new` API are necessary for a more particular scenario.
 
 ## Old compose
 
@@ -9,17 +9,19 @@ The old customize API takes in an argument of type `Partial<IComposeOptions<ITPr
 Here is an example:
 
 ```jsx
-  const CustomText = Text.customize({ tokens: { fontSize: 'header', color: 'hotpink' }});
-  const ComposedButton = Button.compose({
-    slots: {
-      content: CustomText,
-    },
-    settings: [{
+const CustomText = Text.customize({ tokens: { fontSize: 'header', color: 'hotpink' } });
+const ComposedButton = Button.compose({
+  slots: {
+    content: CustomText,
+  },
+  settings: [
+    {
       content: {
         style: { marginTop: -1, marginBottom: 1, marginStart: 0, marginEnd: -2 },
       },
-    }],
-  });
+    },
+  ],
+});
 ```
 
 ## New compose
@@ -29,21 +31,20 @@ The new customize API takes in an argument of type `Partial<ComposeFactoryOption
 Here is an example of a more common use case:
 
 ```jsx
-  const CustomText = Text.customize({ fontSize: 'header', color: 'hotpink' });
-  const ComposedButton = Button.compose({
-    slots: {
-      root: View,
-      icon: Icon,
-      content: CustomText,
+const CustomText = Text.customize({ fontSize: 'header', color: 'hotpink' });
+const ComposedButton = Button.compose({
+  slots: {
+    root: View,
+    icon: Icon,
+    content: CustomText,
+  },
+  slotProps: {
+    content: {
+      // Only overrides the style prop of the content slot - other props and slots are left alone
+      style: { marginTop: -1, marginBottom: 1, marginStart: 0, marginEnd: -2 },
     },
-    slotProps: {
-      content: {
-        // Only overrides the style prop of the content slot - other props and slots are left alone
-        style: { marginTop: -1, marginBottom: 1, marginStart: 0, marginEnd: -2 },
-      },
-    },
-  });
-
+  },
+});
 ```
 
 ## Moving from old to new
