@@ -2524,13 +2524,13 @@
     find-up "^5.0.0"
 
 "@rnx-kit/metro-config@^1.2.26":
-  version "1.2.27"
-  resolved "https://registry.yarnpkg.com/@rnx-kit/metro-config/-/metro-config-1.2.27.tgz#79b1d8826b34ad4dda878b116ea3b0b9bb49d58c"
-  integrity sha512-tITsoINAlrB/tBpnVNpKAUbAeTwR71vC6YeKCgrcMe05yNxXWyZr7QXW6rP4HpHTBYIjgSHJ752TEne5xwXzzg==
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@rnx-kit/metro-config/-/metro-config-1.2.30.tgz#a83ddf72cc7a0a567406b2db8f032ed0d078d238"
+  integrity sha512-j8/qQuJCFr2JpGuLfRPo9XZOXsCmfNatZNqlxgMUzTqJUYhJDzZMeuKgR//2AhHKbDnpK/ez1YozVbj1iMv+EA==
   dependencies:
     "@rnx-kit/babel-preset-metro-react-native" "^1.0.17"
-    "@rnx-kit/tools-node" "^1.2.6"
-    workspace-tools "^0.16.2"
+    "@rnx-kit/tools-node" "^1.2.7"
+    workspace-tools "^0.18.2"
 
 "@rnx-kit/metro-plugin-cyclic-dependencies-detector@^1.0.21":
   version "1.0.21"
@@ -2590,10 +2590,10 @@
   resolved "https://registry.yarnpkg.com/@rnx-kit/tools-language/-/tools-language-1.2.6.tgz#ced63a53ce9821d14acb57a927237e5c39801387"
   integrity sha512-8pq4JlFIkOqjwkN6amYebQ2CTAa1EeYjSBurGh8upYZtqUZBXDOK7FUAx+OVHs/7qQfmF2lU7QpqA7DZGv4xJA==
 
-"@rnx-kit/tools-node@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@rnx-kit/tools-node/-/tools-node-1.2.6.tgz#34de31b1c2ec681a3009b27c137cc1f2c57b7e9c"
-  integrity sha512-oiVbP801aabLCBl42l448QPlui/SEQcuWURZOmVbg04ntyLGgUNgYN87Zen+2yr/LnnI2ec1SOtftHbK6Ro+5A==
+"@rnx-kit/tools-node@^1.2.6", "@rnx-kit/tools-node@^1.2.7":
+  version "1.2.7"
+  resolved "https://registry.yarnpkg.com/@rnx-kit/tools-node/-/tools-node-1.2.7.tgz#ae702763d26fc9b5a0984c5fddd90e38e03b06a1"
+  integrity sha512-vgURBJttO8z1nSrJm3KWgzEO3/oat5Rn/Fx2b9XyEf7y2CzJh1fwf48XddDnzmSKFNd/SihP7hDcVcEqZ/evCQ==
   dependencies:
     "@rnx-kit/tools-language" "^1.2.6"
     find-up "^5.0.0"
@@ -14167,9 +14167,9 @@ react-native-codegen@^0.0.6:
     nullthrows "^1.1.1"
 
 react-native-macos@^0.64.0, react-native-macos@^0.64.6:
-  version "0.64.27"
-  resolved "https://registry.yarnpkg.com/react-native-macos/-/react-native-macos-0.64.27.tgz#bcc12d50b0fb6252550a3cd7cb70dc17d3a5ed96"
-  integrity sha512-5BzD6MEU3MiDL55mFUNWtnxAmzSLk8Qi40W4ut61MXxhaYLunugR7L/FnUltvnOa/uRAPbxhUbawK5YLZEV4oQ==
+  version "0.64.29"
+  resolved "https://registry.yarnpkg.com/react-native-macos/-/react-native-macos-0.64.29.tgz#9e302e000fe98403a6ef54961b5c7a1f569f936f"
+  integrity sha512-T2RtLeyMBTskTHshNao/dve41LFshFSSFDygjRszyEI1led1Alz3jBCC5SQCgjPBX+RlPa4lMkmT9bon0p0ECw==
   dependencies:
     "@jest/create-cache-key-function" "^26.5.0"
     "@react-native-community/cli" "^5.0.1-alpha.1"
