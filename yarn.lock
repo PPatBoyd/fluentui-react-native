@@ -2335,9 +2335,9 @@
     "@rnx-kit/tools-node" "^1.2.6"
 
 "@rnx-kit/eslint-plugin@^0.2.8":
-  version "0.2.11"
-  resolved "https://registry.yarnpkg.com/@rnx-kit/eslint-plugin/-/eslint-plugin-0.2.11.tgz#ff49840e520f5401a7d61e0cbb9bc6e9c42c61d7"
-  integrity sha512-43N6mQYVwSUZJMEpeovVsXq8acpz2e7BWAkNg59FJA90VfBd8oMyfJ3/B9d9emCSSMCKWJra+aPSF182GlDx2Q==
+  version "0.2.13"
+  resolved "https://registry.yarnpkg.com/@rnx-kit/eslint-plugin/-/eslint-plugin-0.2.13.tgz#47aa9cc9678fe70f75031a1b7b0ae7d61ec8f543"
+  integrity sha512-AyKJNyLr0P+zJZ3ctpAoRTeZ5ysHQlq12oVv0SYz4B8bkDd2JSAfCja3iMqmAbpstvkCAHEwMuaZ1jCVwgqO9w==
   dependencies:
     "@typescript-eslint/eslint-plugin" "^5.0.0"
     "@typescript-eslint/parser" "^5.0.0"
