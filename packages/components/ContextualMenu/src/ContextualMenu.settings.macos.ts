@@ -5,7 +5,7 @@ import { I18nManager } from 'react-native';
 export const settings: IComposeSettings<ContextualMenuType> = [
   {
     tokens: {
-      directionalHint: I18nManager.isRTL ? 'bottomRightEdge' : 'bottonLeftEdge',
+      directionalHint: I18nManager.isRTL ? 'bottomRightEdge' : 'bottomLeftEdge',
     },
     container: {
       style: {
