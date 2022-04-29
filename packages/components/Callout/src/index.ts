@@ -1,12 +1,11 @@
-export { calloutName } from './Callout.types';
 export type {
+  calloutName,
   DirectionalHint,
   DismissBehaviors,
-  ICalloutProps,
-  ICalloutRenderData,
-  ICalloutSlotProps,
-  ICalloutTokens,
-  ICalloutType,
+  CalloutProps,
+  CalloutSlotProps,
+  CalloutTokens,
+  CalloutType,
   RestoreFocusEvent,
 } from './Callout.types';
 export { Callout } from './Callout';

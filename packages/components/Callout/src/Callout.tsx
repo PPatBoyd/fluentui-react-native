@@ -1,11 +1,10 @@
+/** @jsx withSlots */
 import { useViewCommandFocus } from '@fluentui-react-native/interactive-hooks';
-import { backgroundColorTokens, borderTokens } from '@fluentui-react-native/tokens';
-import { compose, IUseComposeStyling } from '@uifabricshared/foundation-compose';
-import { mergeSettings } from '@uifabricshared/foundation-settings';
+import { compose, withSlots, UseSlots } from '@fluentui-react-native/framework';
 import * as React from 'react';
 import { findNodeHandle, Platform } from 'react-native';
-import { settings } from './Callout.settings';
-import { calloutName, ICalloutProps, ICalloutSlotProps, ICalloutType } from './Callout.types';
+import { stylingSettings } from './Callout.styling';
+import { calloutName, CalloutProps, CalloutType } from './Callout.types';
 import { ensureNativeComponent } from '@fluentui-react-native/component-cache';
 
 const NativeCalloutView = Platform.select({
@@ -13,39 +12,35 @@ const NativeCalloutView = Platform.select({
   default: ensureNativeComponent('RCTCallout'), // win32
 });
 
-export const Callout = compose<ICalloutType>({
+const NativeCallout: React.FunctionComponent<CalloutProps> = (props) => {
+  const calloutRef = useViewCommandFocus(props.componentRef);
+  const [nativeTarget, setNativeTarget] = React.useState<number | string | null>(null);
+
+  React.useLayoutEffect(() => {
+    if (typeof props.target === 'string') {
+      // Pass string type `target` directly
+      setNativeTarget(props.target);
+    } else if (props.target?.current) {
+      // Pass the tagID for a valid ref `target`
+      setNativeTarget(findNodeHandle(props.target.current));
+    }
+  }, [props.target]);
+
+  return <NativeCalloutView ref={calloutRef} target={nativeTarget ?? undefined} {...props} />;
+};
+
+export const Callout = compose<CalloutType>({
   displayName: calloutName,
-  usePrepareProps: (props: ICalloutProps, useStyling: IUseComposeStyling<ICalloutType>) => {
-    const { componentRef, target, ...rest } = props;
-    const calloutRef = useViewCommandFocus(componentRef);
-    const [nativeTarget, setNativeTarget] = React.useState<number | string | null>(null);
-
-    React.useLayoutEffect(() => {
-      if (typeof target === 'string') {
-        // Pass string type `target` directly
-        setNativeTarget(target);
-      } else if (target?.current) {
-        // Pass the tagID for a valid ref `target`
-        setNativeTarget(findNodeHandle(target.current));
-      }
-    }, [target]);
-
-    const slotProps = mergeSettings<ICalloutSlotProps>(useStyling(props), {
-      root: {
-        ref: calloutRef,
-        ...(nativeTarget && { target: nativeTarget }),
-        ...rest,
-      },
-    });
-
-    return { slotProps };
-  },
-  settings: settings,
+  ...stylingSettings,
   slots: {
-    root: NativeCalloutView,
+    root: NativeCallout,
   },
-  styles: {
-    root: [backgroundColorTokens, borderTokens],
+
+  useRender: (props: CalloutProps, useSlots: UseSlots<CalloutType>) => {
+    const Slots = useSlots(props);
+    return (final: CalloutProps) => {
+      return <Slots.root {...final} />;
+    };
   },
 });
 

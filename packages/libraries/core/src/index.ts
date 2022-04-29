@@ -33,11 +33,10 @@ export { Callout, calloutName } from '@fluentui-react-native/callout';
 export type {
   DirectionalHint,
   DismissBehaviors,
-  ICalloutProps,
-  ICalloutRenderData,
-  ICalloutSlotProps,
-  ICalloutTokens,
-  ICalloutType,
+  CalloutProps,
+  CalloutSlotProps,
+  CalloutTokens,
+  CalloutType,
   RestoreFocusEvent,
 } from '@fluentui-react-native/callout';
 

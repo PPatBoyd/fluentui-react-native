@@ -1,4 +1,4 @@
-import { ICalloutProps, ICalloutTokens } from '@fluentui-react-native/callout';
+import { CalloutProps, CalloutTokens } from '@fluentui-react-native/callout';
 import { IViewProps } from '@fluentui-react-native/adapters';
 import { IRenderData } from '@uifabricshared/foundation-composable';
 import { ScrollViewProps } from 'react-native';
@@ -36,9 +36,9 @@ export interface ContextualMenuState {
   context: ContextualMenuContext;
 }
 
-export type ContextualMenuTokens = ICalloutTokens;
+export type ContextualMenuTokens = CalloutTokens;
 
-export interface ContextualMenuProps extends IViewProps, Omit<ICalloutProps, 'setInitialFocus'> {
+export interface ContextualMenuProps extends IViewProps, Omit<CalloutProps, 'setInitialFocus'> {
   /**
    * Whether to set initial focus on the contextual menu container, as opposed to the first menu item.
    * @platform win32

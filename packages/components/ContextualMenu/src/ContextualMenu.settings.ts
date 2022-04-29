@@ -8,9 +8,11 @@ export const settings: IComposeSettings<ContextualMenuType> = [
       beakWidth: 20,
       borderColor: 'buttonBorder',
       borderWidth: 1,
-      directionalHint: 'bottomLeftEdge',
       gapSpace: 0,
       minPadding: 0,
+    },
+    root: {
+      directionalHint: 'bottomLeftEdge',
     },
     container: {
       style: {
