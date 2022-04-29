@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { View, Switch } from 'react-native';
-import { FocusZone, Text, FocusZoneDirection, Checkbox } from '@fluentui/react-native';
+import { View } from 'react-native';
+import { Checkbox, FocusZone, FocusZoneDirection, Text } from '@fluentui/react-native';
 import { ButtonV1 as Button, ButtonProps } from '@fluentui-react-native/button';
+import { GridOfButtons } from '../Common/GridOfButtons';
 import { Test, TestSection, PlatformStatus } from '../Test';
 import { FOCUSZONE_TESTPAGE } from './consts';
-import { focusZoneTestStyles, GridButton, stackStyleFocusZone, SubheaderText } from './styles';
+import { focusZoneTestStyles, stackStyleFocusZone, SubheaderText } from './styles';
 import { commonTestStyles } from '../Common/styles';
 import { Stack } from '@fluentui-react-native/stack';
-import { MenuButton, MenuButtonItemProps } from '@fluentui-react-native/experimental-menu-button';
+import { SwitchWithLabel } from '../Common/SwitchWithLabel';
+import { MenuPicker } from '../Common/MenuPicker';
 
 const ListOfCheckboxes: React.FunctionComponent = () => {
   return (
@@ -129,41 +131,6 @@ const CommonUsageFocusZone: React.FunctionComponent = () => {
   );
 };
 
-type GridOfButtonsProps = {
-  gridWidth: number;
-  gridHeight: number;
-  buttonRefs?: React.RefObject<View>[];
-  onClick?: (index: number) => void;
-};
-
-const GridOfButtons: React.FunctionComponent<GridOfButtonsProps> = (props: GridOfButtonsProps) => {
-  return (
-    <React.Fragment>
-      {[...Array(props.gridHeight)].map((_value, heightIndex: number) => {
-        return (
-          <View key={heightIndex} style={focusZoneTestStyles.focusZoneViewStyle}>
-            {[...Array(props.gridWidth)].map((_value, widthIndex: number) => {
-              const gridIndex = heightIndex * props.gridWidth + widthIndex + 1;
-              return (
-                <GridButton
-                  key={widthIndex}
-                  style={focusZoneTestStyles.focusZoneButton}
-                  componentRef={props?.buttonRefs?.[gridIndex]}
-                  onClick={() => {
-                    props?.onClick?.(gridIndex);
-                  }}
-                >
-                  <Text>{gridIndex}</Text>
-                </GridButton>
-              );
-            })}
-          </View>
-        );
-      })}
-    </React.Fragment>
-  );
-};
-
 const Navigation2DFocusZone: React.FunctionComponent = () => {
   const [defaultTabbableElementIndex, setDefaultTabbableElementIndex] = React.useState<number | null>(5);
   const gridWidth = 3,
@@ -204,28 +171,11 @@ const Navigation2DFocusZone: React.FunctionComponent = () => {
   );
 };
 
-interface ISwitchWithLabelProps {
-  label: string;
-  value: boolean;
-  onValueChange: (value: boolean) => void;
-}
-
-function SwitchWithLabel(props: ISwitchWithLabelProps): React.ReactElement {
-  const { label, value, onValueChange } = props;
-  return (
-    <View style={commonTestStyles.switch}>
-      <Text>{label}</Text>
-      <Switch value={value} onValueChange={onValueChange} />
-    </View>
-  );
-}
-
 const CustomizableFocusZone: React.FunctionComponent = () => {
   const [is2DNav, set2dNav] = React.useState(false);
   const [isDisabled, setDisabled] = React.useState(false);
   const [isCircularNav, setIsCircularNav] = React.useState(false);
   const [focusZoneDirection, setFocusZoneDirection] = React.useState<FocusZoneDirection>('bidirectional');
-  const menuItems: MenuButtonItemProps[] = FocusZoneDirections.map((direction) => ({ itemKey: direction, text: direction }));
 
   return (
     <View style={commonTestStyles.root}>
@@ -234,14 +184,11 @@ const CustomizableFocusZone: React.FunctionComponent = () => {
           <SwitchWithLabel label="2D Navigation" value={is2DNav} onValueChange={set2dNav} />
           <SwitchWithLabel label="Disabled" value={isDisabled} onValueChange={setDisabled} />
           <SwitchWithLabel label="Circular Navigation" value={isCircularNav} onValueChange={setIsCircularNav} />
-          <MenuButton
-            content={focusZoneDirection}
-            menuItems={menuItems}
+          <MenuPicker
+            prompt="FocusZoneDirection"
+            contentKey={focusZoneDirection}
+            menuItems={FocusZoneDirections.map((direction) => ({ itemKey: direction, text: direction }))}
             onItemClick={(direction) => setFocusZoneDirection(direction as FocusZoneDirection)}
-            contextualMenu={{
-              shouldFocusOnMount: true,
-              shouldFocusOnContainer: true,
-            }}
           />
         </View>
 

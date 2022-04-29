@@ -1,8 +1,6 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { IStackProps } from '@fluentui-react-native/stack';
 import { Text } from '@fluentui/react-native';
-import { ButtonV1 as Button } from '@fluentui-react-native/button';
-import { Icon } from '@fluentui-react-native/icon';
 
 export const focusZoneTestStyles = StyleSheet.create({
   focusZoneViewStyle: {
@@ -23,19 +21,6 @@ export const focusZoneTestStyles = StyleSheet.create({
   focusZoneButton: {
     height: 50,
     width: 50,
-  },
-});
-
-export const GridButton = Button.compose({
-  slots: {
-    root: View,
-    icon: Icon,
-    content: Text,
-  },
-  slotProps: {
-    content: {
-      style: { aspectRatio: 1, alignItems: 'center', justifyContent: 'center' },
-    },
   },
 });
 
