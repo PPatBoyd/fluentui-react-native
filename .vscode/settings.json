@@ -63,25 +63,27 @@
     "editor.formatOnSave": false
   },
   "cSpell.words": [
-    "Larrson",
-    "Pressable",
-    "Semibold",
-    "Subheadline",
-    "TESTPAGE",
     "beachball",
     "cocoapods",
     "consts",
     "fluentui",
     "focusable",
+    "FOCUSZONE",
+    "Larrson",
     "macos",
     "monospace",
     "nuget",
     "objc",
     "podspec",
     "podspecs",
+    "Pressable",
+    "Semibold",
     "stylesheet",
+    "Subheadline",
     "subspec",
+    "TESTPAGE",
     "uifabricshared",
-    "unemphasized"
+    "unemphasized",
+    "vmargin"
   ]
 }

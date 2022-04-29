@@ -257,8 +257,8 @@ The following is a set of keys that interact with the `Button` component:
 
 #### Cursor interaction
 
-- Cursor moves onto botton: Should immediately change the styling of the `Button` so that it appears to be hovered.
-- Cursor moves out of botton: Should immediately remove the hovered styling of the `Button`.
+- Cursor moves onto button: Should immediately change the styling of the `Button` so that it appears to be hovered.
+- Cursor moves out of button: Should immediately remove the hovered styling of the `Button`.
 - Mouse click: Should execute the `Button` and move focus to its target.
 
 #### Touch interaction
