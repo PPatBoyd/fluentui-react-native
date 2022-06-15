@@ -21,6 +21,16 @@ export const stylingSettings: UseStylingOptions<MenuItemProps, MenuItemSlotProps
       }),
       ['backgroundColor', ...layoutStyles.keys],
     ),
+    checkmark: buildProps(
+      (tokens: MenuItemTokens) => ({
+        style: {
+          height: tokens.checkmarkSize,
+          width: tokens.checkmarkSize,
+          marginEnd: tokens.gap,
+        },
+      }),
+      ['checkmarkSize', 'gap'],
+    ),
     content: buildProps(
       (tokens: MenuItemTokens, theme: Theme) => {
         return {
@@ -37,6 +47,13 @@ export const stylingSettings: UseStylingOptions<MenuItemProps, MenuItemSlotProps
       (tokens: MenuItemTokens) => {
         return {
           color: tokens.color,
+          height: 16,
+          width: 16,
+          viewBox:
+            '0 0 ' +
+            (tokens.submenuIndicatorSize - tokens.submenuIndicatorPadding * 2) +
+            ' ' +
+            (tokens.submenuIndicatorSize - tokens.submenuIndicatorPadding * 2),
         };
       },
       ['color'],

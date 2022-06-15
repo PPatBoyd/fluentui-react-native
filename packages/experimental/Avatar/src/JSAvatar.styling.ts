@@ -1,9 +1,20 @@
-import { JSAvatarName, JSAvatarTokens, AvatarSlotProps, JSAvatarProps, AvatarColors, AvatarSizes } from './JSAvatar.types';
+import {
+  JSAvatarName,
+  JSAvatarTokens,
+  AvatarConfigurableProps,
+  AvatarSlotProps,
+  JSAvatarProps,
+  AvatarColors,
+  AvatarSizesForTokens,
+  AvatarNamedColor,
+  ColorSchemes,
+  AvatarColorSchemes,
+} from './JSAvatar.types';
 import { Theme, UseStylingOptions, buildProps } from '@fluentui-react-native/framework';
 import { defaultJSAvatarTokens } from './JSAvatarTokens';
 import { ViewStyle } from 'react-native';
 import { getRingConfig } from './JSAvatar.helpers';
-import { borderStyles } from '@fluentui-react-native/tokens';
+import { borderStyles, fontStyles } from '@fluentui-react-native/tokens';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
@@ -11,20 +22,35 @@ const nameMap: { [key: string]: string } = {
   end: 'flex-end',
 };
 
-export const avatarStates: (keyof JSAvatarTokens)[] = [...AvatarColors, ...AvatarSizes, 'circular', 'square', 'inactive'];
+export const avatarStates: (keyof JSAvatarTokens)[] = [
+  ...AvatarColors,
+  ...AvatarSizesForTokens,
+  'neutral',
+  'brand',
+  'circular',
+  'square',
+  'inactive',
+  'ringColor',
+  'iconColor',
+  'iconSize',
+  'size',
+];
+
+const tokensThatAreAlsoProps: (keyof AvatarConfigurableProps)[] = ['avatarColor', 'initialsColor', 'ring'];
 
 export const stylingSettings: UseStylingOptions<JSAvatarProps, AvatarSlotProps, JSAvatarTokens> = {
   tokens: [defaultJSAvatarTokens, JSAvatarName],
+  tokensThatAreAlsoProps,
   states: avatarStates,
   slotProps: {
     root: buildProps(
       (tokens: JSAvatarTokens) => {
-        const { horizontalIconAlignment, verticalIconAlignment, width, height, avatarOpacity } = tokens;
+        const { horizontalIconAlignment, verticalIconAlignment, size, avatarOpacity } = tokens;
         return {
           style: {
             flexDirection: 'row',
-            width: width,
-            height: height,
+            width: size,
+            height: size,
             justifyContent: nameMap[horizontalIconAlignment || 'end'] as ViewStyle['justifyContent'],
             alignItems: nameMap[verticalIconAlignment || 'end'] as ViewStyle['alignItems'],
             horizontalIconAlignment,
@@ -33,80 +59,92 @@ export const stylingSettings: UseStylingOptions<JSAvatarProps, AvatarSlotProps, 
           },
         };
       },
-      ['horizontalIconAlignment', 'verticalIconAlignment', 'avatarOpacity', 'height', 'width'],
+      ['horizontalIconAlignment', 'verticalIconAlignment', 'avatarOpacity', 'size'],
     ),
     initials: buildProps(
-      (tokens: JSAvatarTokens) => {
+      (tokens: JSAvatarTokens, theme: Theme) => {
         return {
           style: {
-            fontSize: tokens.initialsSize,
-            color: tokens.color,
+            ...fontStyles.from(tokens, theme),
+            color: tokens.initialsColor || tokens.color,
+            textAlign: 'center',
           },
         };
       },
-      ['initialsSize', 'color'],
+      ['color', 'initialsColor', ...fontStyles.keys],
     ),
     initialsBackground: buildProps(
       (tokens: JSAvatarTokens, theme: Theme) => {
-        const { backgroundColor } = tokens;
+        const { backgroundColor, size, avatarColor } = tokens;
+        const _avatarColor =
+          !avatarColor || AvatarColors.includes(avatarColor as AvatarNamedColor) || ColorSchemes.includes(avatarColor as AvatarColorSchemes)
+            ? backgroundColor
+            : avatarColor;
 
         return {
           style: {
             ...borderStyles.from(tokens, theme),
-            width: tokens.width,
-            height: tokens.height,
+            width: size,
+            height: size,
             flexGrow: 1,
             alignSelf: 'stretch',
             justifyContent: 'center',
             alignItems: 'center',
-            backgroundColor: backgroundColor,
+            backgroundColor: _avatarColor,
+            borderWidth: tokens.borderWidth,
+            borderColor: tokens.borderColor,
           },
         };
       },
-      ['backgroundColor', 'width', 'height', ...borderStyles.keys],
+      ['avatarColor', 'backgroundColor', 'size', 'borderColor', 'borderWidth', ...borderStyles.keys],
     ),
     image: buildProps(
       (tokens: JSAvatarTokens) => {
+        const { borderRadius, size, borderWidth, borderColor } = tokens;
         return {
           style: {
-            borderRadius: tokens.borderRadius,
-            width: tokens.width,
-            height: tokens.height,
+            borderRadius: borderRadius,
+            width: size,
+            height: size,
+            borderWidth: borderWidth,
+            borderColor: borderColor,
           },
         };
       },
-      ['borderRadius', 'width', 'height'],
+      ['borderRadius', 'size', 'borderColor', 'borderWidth'],
     ),
     icon: buildProps(
       (tokens: JSAvatarTokens) => {
         return {
           style: {
             position: 'absolute',
-            width: tokens.iconSize,
-            height: tokens.iconSize,
+            fontSize: tokens.iconSize,
           },
+          color: tokens.color,
+          width: tokens.iconSize,
+          height: tokens.iconSize,
         };
       },
-      ['iconSize'],
+      ['iconSize', 'iconColor'],
     ),
     ring: buildProps(
       (tokens: JSAvatarTokens, theme: Theme) => {
-        const ringConfig = getRingConfig(tokens.width);
+        const ringConfig = getRingConfig(tokens.size);
         return {
           style: {
             borderStyle: 'solid',
-            borderColor: tokens.ringColor,
-            borderWidth: ringConfig.stroke,
             width: ringConfig.size,
             height: ringConfig.size,
             position: 'absolute',
             top: -ringConfig.stroke * 2,
             left: -ringConfig.stroke * 2,
             ...borderStyles.from(tokens, theme),
+            borderWidth: ringConfig.stroke,
+            borderColor: tokens.ringColor,
           },
         };
       },
-      ['width', 'height', 'ringColor', ...borderStyles.keys],
+      ['size', 'ringColor', ...borderStyles.keys],
     ),
     badge: buildProps(
       (tokens: JSAvatarTokens) => {
@@ -115,7 +153,7 @@ export const stylingSettings: UseStylingOptions<JSAvatarProps, AvatarSlotProps, 
           shape: 'circular',
         };
       },
-      ['size'],
+      ['badgeSize'],
     ),
   },
 };

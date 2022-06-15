@@ -1,14 +1,21 @@
-import type { IViewProps } from '@fluentui-react-native/adapters';
+import { InteractionEvent } from '@fluentui-react-native/interactive-hooks';
 import React from 'react';
+import type { MenuListProps } from '../MenuList/MenuList.types';
 
 export const menuName = 'Menu';
 
-export interface MenuProps extends Omit<IViewProps, 'onPress'> {
+export interface MenuProps extends MenuListProps {
+  defaultOpen?: boolean;
   open?: boolean;
+  onOpenChange?: (e: InteractionEvent, isOpen: boolean) => void;
+  openOnHover?: boolean;
 }
 
 export interface MenuState extends MenuProps {
+  isControlled: boolean;
   isSubmenu: boolean;
-  setOpen: (isOpen: boolean) => void;
+  parentPopoverHoverOutTimer?: NodeJS.Timeout;
+  setOpen: (e: InteractionEvent, isOpen: boolean, bubble?: boolean) => void;
+  shouldFocusOnContainer: boolean;
   triggerRef: React.RefObject<React.Component>;
 }

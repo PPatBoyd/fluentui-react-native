@@ -1,9 +1,11 @@
-import type { IViewProps } from '@fluentui-react-native/adapters';
+import { IViewProps } from '@fluentui-react-native/adapters';
+import { ICalloutProps } from '@fluentui-react-native/callout';
 
 export const menuPopoverName = 'MenuPopover';
 
-export interface MenuPopoverProps extends Omit<IViewProps, 'onPress'> {}
+export type MenuPopoverProps = ICalloutProps;
 
 export interface MenuPopoverState {
-  triggerRef: React.RefObject<React.Component>;
+  props: ICalloutProps;
+  innerView: IViewProps;
 }
