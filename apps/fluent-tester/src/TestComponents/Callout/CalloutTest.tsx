@@ -203,6 +203,29 @@ const StandardCallout: React.FunctionComponent = () => {
     setScrollviewContents((arr) => [...arr, 1]);
   }, [setScrollviewContents]);
 
+  const flexyLabelContent = React.useMemo(() => {
+    const extraText = preventDismissOnKeyDown ? 'up' : 'up long long long long long';
+    return !isBeakVisible ? (
+      <>
+        <Text style={{ color: 'green' }}>{'Bol me'}</Text>
+        <Text>{extraText}</Text>
+      </>
+    ) : (
+      <>{'Bol me' + extraText}</>
+    );
+  }, [isBeakVisible, preventDismissOnKeyDown]);
+
+  const flexyLabelContent2 = React.useMemo(() => {
+    return !isBeakVisible ? (
+      <>
+        <Text style={{ color: 'green' }}>{'Bol me'}</Text>
+        <Text>{'up'}</Text>
+      </>
+    ) : (
+      <>{'Bol meup'}</>
+    );
+  }, [isBeakVisible]);
+
   return (
     <View>
       <View style={{ flexDirection: 'row', paddingVertical: 5 }}>
@@ -270,10 +293,16 @@ const StandardCallout: React.FunctionComponent = () => {
             onClick={toggleShowStandardCallout}
             disabled={openCalloutOnHoverAnchor}
           />
-          <Text>
-            <Text>Visibility: </Text>
-            {isStandardCalloutVisible ? <Text style={{ color: 'green' }}>Visible</Text> : <Text style={{ color: 'red' }}>Not Visible</Text>}
-          </Text>
+
+          <View style={{ flexDirection: 'column', maxWidth: 100, maxHeight: 30 }}>
+            <Text numberOfLines={1}>{flexyLabelContent}</Text>
+          </View>
+          <View style={{ flexDirection: 'column', maxWidth: 100, maxHeight: 30 }}>
+            <Text>{flexyLabelContent2}</Text>
+          </View>
+          <View style={{ flexDirection: 'column' }}>
+            <Text>click beak & keydown buttons</Text>
+          </View>
         </View>
 
         <Separator vertical />
