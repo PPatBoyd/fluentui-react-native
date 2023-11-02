@@ -29,10 +29,10 @@ export const FluentTesterApp: React.FunctionComponent<FluentTesterProps> = () =>
   //const scrollerRef = React.createRef<FlatList>();
   const flatListContainerStyle = { padding: 10 };
 
-  const [fzVisible, setFzVisible] = React.useState(false);
+  const [fzVisible, setFzVisible] = React.useState(0);
 
   const showFz = () => {
-    setFzVisible(!fzVisible);
+    setFzVisible((fzVisible + 1) % 3);
   };
 
   // Sample data
@@ -82,16 +82,27 @@ export const FluentTesterApp: React.FunctionComponent<FluentTesterProps> = () =>
 
   return (
     <View style={{ flex: 1, flexGrow: 1, flexShrink: 1 }}>
-      <Button title="Show FocusZone" onPress={showFz} />
+      <Button color="lightblue" title="Toggle FocusZone Tristate" onPress={showFz} />
       <View style={{ flex: 1, flexGrow: 1, flexShrink: 1 }}>
         <Button title="Header" />
-        <View style={{ flex: 1, maxWidth: 200 }}>
-          {fzVisible ? (
-            <FocusZone>
-              <FlatList contentContainerStyle={flatListContainerStyle} data={data} renderItem={renderItem} />
-            </FocusZone>
-          ) : (
-            <FlatList contentContainerStyle={flatListContainerStyle} data={data} renderItem={renderItem} />
+        <View style={{ flex: 1, maxWidth: 200, flexDirection: 'row' }}>
+          {fzVisible % 2 === 0 && (
+            <View /*style={{ flexDirection: 'row' }}*/>
+              {/*uncomment style for different behavior*/}
+              <Button color="lightgreen" title="FocusZone wrapped" />
+              <FocusZone>
+                <FlatList contentContainerStyle={flatListContainerStyle} data={data} renderItem={renderItem} />
+              </FocusZone>
+            </View>
+          )}
+          {fzVisible > 0 && (
+            <View /*style={{ flexDirection: 'row' }}*/>
+              {/*uncomment style for different behavior*/}
+              <Button color="lightyellow" title="View wrapped" />
+              <View>
+                <FlatList contentContainerStyle={flatListContainerStyle} data={data} renderItem={renderItem} />
+              </View>
+            </View>
           )}
         </View>
       </View>
