@@ -30,10 +30,7 @@ export const FluentTesterApp: React.FunctionComponent<FluentTesterProps> = () =>
   const flatListContainerStyle = { padding: 10 };
 
   const [fzVisible, setFzVisible] = React.useState(0);
-
-  const showFz = () => {
-    setFzVisible((fzVisible + 1) % 3);
-  };
+  const [flexDirection, setFlexDirection] = React.useState<'row' | 'column'>('row');
 
   // Sample data
   const data = [
@@ -82,13 +79,15 @@ export const FluentTesterApp: React.FunctionComponent<FluentTesterProps> = () =>
 
   return (
     <View style={{ flex: 1, flexGrow: 1, flexShrink: 1 }}>
-      <Button color="lightblue" title="Toggle FocusZone Tristate" onPress={showFz} />
+      <View style={{ flexDirection: 'row' }}>
+        <Button color="lightblue" title="Toggle FocusZone Tristate" onPress={() => setFzVisible((fzVisible + 1) % 3)} />
+        <Button color="lightblue" title="Swap FlexDirection" onPress={() => setFlexDirection(flexDirection === 'row' ? 'column' : 'row')} />
+      </View>
       <View style={{ flex: 1, flexGrow: 1, flexShrink: 1 }}>
         <Button title="Header" />
         <View style={{ flex: 1, maxWidth: 200, flexDirection: 'row' }}>
           {fzVisible % 2 === 0 && (
-            <View /*style={{ flexDirection: 'row' }}*/>
-              {/*uncomment style for different behavior*/}
+            <View style={{ flexDirection: flexDirection }}>
               <Button color="lightgreen" title="FocusZone wrapped" />
               <FocusZone>
                 <FlatList contentContainerStyle={flatListContainerStyle} data={data} renderItem={renderItem} />
@@ -96,8 +95,7 @@ export const FluentTesterApp: React.FunctionComponent<FluentTesterProps> = () =>
             </View>
           )}
           {fzVisible > 0 && (
-            <View /*style={{ flexDirection: 'row' }}*/>
-              {/*uncomment style for different behavior*/}
+            <View style={{ flexDirection: flexDirection }}>
               <Button color="lightyellow" title="View wrapped" />
               <View>
                 <FlatList contentContainerStyle={flatListContainerStyle} data={data} renderItem={renderItem} />
