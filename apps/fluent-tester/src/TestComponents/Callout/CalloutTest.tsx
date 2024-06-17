@@ -1,8 +1,8 @@
 import * as React from 'react';
-import type { KeyboardMetrics } from 'react-native';
-import { Text, View, Switch, ScrollView, Platform } from 'react-native';
+import type { KeyboardMetrics, Text as RNText } from 'react-native';
+import { View, Switch, ScrollView, Platform } from 'react-native';
 
-import { Button, Callout, Separator, Pressable, StealthButton } from '@fluentui/react-native';
+import { Button, Callout, Separator, Pressable, StealthButton, TextV1 as Text } from '@fluentui/react-native';
 import type { IFocusable, RestoreFocusEvent, DismissBehaviors, ICalloutProps } from '@fluentui/react-native';
 
 import { E2ECalloutTest } from './CalloutE2ETest';
@@ -61,12 +61,14 @@ const StandardCallout: React.FunctionComponent = () => {
     [calloutDismissBehaviors],
   );
 
+  const textAnchorNativeId = 'CalloutTextAnchorNativeId';
+  const textRef = React.useRef<RNText>(null);
   const redTargetRef = React.useRef<View>(null);
   const blueTargetRef = React.useRef<View>(null);
   const greenTargetRef = React.useRef<View>(null);
   const decoyBtn1Ref = React.useRef<IFocusable>(null);
   const decoyBtn2Ref = React.useRef<IFocusable>(null);
-  const [anchorRef, setAnchorRef] = React.useState<React.RefObject<View> | undefined>(redTargetRef);
+  const [anchorRef, setAnchorRef] = React.useState<React.RefObject<View> | React.RefObject<RNText> | string | undefined>(redTargetRef);
   const [hoveredTargetsCount, setHoveredTargetsCount] = React.useState(0);
   const [displayCountHoveredTargets, setDisplayCountHoveredTargets] = React.useState(0);
 
@@ -143,7 +145,7 @@ const StandardCallout: React.FunctionComponent = () => {
 
   const toggleCalloutRef = React.useCallback(() => {
     // Cycle the target ref between the RGB target views
-    setAnchorRef(anchorRef === redTargetRef ? greenTargetRef : anchorRef === greenTargetRef ? blueTargetRef : redTargetRef);
+    setAnchorRef(anchorRef === redTargetRef ? textRef : anchorRef === textRef ? textAnchorNativeId : redTargetRef);
   }, [anchorRef]);
 
   const switchTargetRefOrRect = React.useCallback(() => {
@@ -237,7 +239,7 @@ const StandardCallout: React.FunctionComponent = () => {
         <View style={{ flexDirection: 'column', paddingHorizontal: 5 }}>
           <View style={{ flexDirection: 'row' }}>
             <Switch value={openCalloutOnHoverAnchor} onValueChange={setOpenCalloutOnHoverAnchor} />
-            <Text>Show Callout On Hover Anchor</Text>
+            <Text componentRef={textRef}>Show Callout On Hover Anchor</Text>
           </View>
 
           <View style={{ flexDirection: 'row' }}>
@@ -247,7 +249,7 @@ const StandardCallout: React.FunctionComponent = () => {
 
           <View style={{ flexDirection: 'row' }}>
             <Switch value={customRestoreFocus} onValueChange={onRestoreFocusChange} />
-            <Text>Customize Restore Focus</Text>
+            <Text nativeID={textAnchorNativeId}>Customize Restore Focus</Text>
           </View>
 
           <View style={{ flexDirection: 'row' }}>
