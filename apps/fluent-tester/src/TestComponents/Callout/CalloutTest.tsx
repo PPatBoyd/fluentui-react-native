@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { KeyboardMetrics } from 'react-native';
 import { Text, View, Switch, ScrollView, Platform } from 'react-native';
 
-import { Button, Callout, Separator, Pressable, StealthButton } from '@fluentui/react-native';
+import { Button, Callout, Separator, Pressable, StealthButton, TextV1 as Text, FocusZone } from '@fluentui/react-native';
 import type { IFocusable, RestoreFocusEvent, DismissBehaviors, ICalloutProps } from '@fluentui/react-native';
 
 import { E2ECalloutTest } from './CalloutE2ETest';
@@ -419,8 +419,31 @@ const CustomCallout: React.FunctionComponent = () => {
 
   const myRect: KeyboardMetrics = { screenX: 10, screenY: 10, width: 100, height: 100 };
 
+  const [dummy, setDummy] = React.useState(false);
+
   return (
     <View>
+      <Text focusable selectable>
+        Select here for easy focus entry
+      </Text>
+      <Separator style={{ paddingVertical: 20 }} />
+      <FocusZone navigationOrderInRenderOrder={true} accessible role={'group'}>
+        <View style={{ flexDirection: 'column', paddingHorizontal: 5, flexShrink: 1, flexGrow: 0 }}>
+          <Text style={{ flexShrink: 1, maxWidth: 200 }} accessible accessibilityLabel={'??? complex text root'} selectable focusable>
+            {'Complex and lots and lots of text and lots and lots of text and lots and lots of text '}
+            <Text>
+              {' text tree and lots and lots of text '}
+              <Switch value={dummy} onValueChange={setDummy} />
+              {
+                ' with multiple nested text runs and lots and lots of text and lots and lots of text and lots and lots of text and lots and lots of text '
+              }
+            </Text>
+            <Switch value={!dummy} onValueChange={() => setDummy(!dummy)} />
+            {' and subtext runs and lots and lots of text '}
+          </Text>
+        </View>
+      </FocusZone>
+
       <View style={{ flexDirection: 'column', paddingVertical: 5 }}>
         <Button content="Press for Callout" onClick={toggleShowCustomizedCallout} />
         <Text selectable={true}>
@@ -449,13 +472,13 @@ const CustomCallout: React.FunctionComponent = () => {
 
 const calloutSections: TestSection[] = [
   {
+    name: 'Customized Usage',
+    component: CustomCallout,
+  },
+  {
     name: 'Standard Usage',
     testID: CALLOUT_TESTPAGE,
     component: StandardCallout,
-  },
-  {
-    name: 'Customized Usage',
-    component: CustomCallout,
   },
 ];
 
