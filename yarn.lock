@@ -6860,12 +6860,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rnx-kit/align-deps@npm:^3.0.0, @rnx-kit/align-deps@npm:^3.0.6":
-  version: 3.0.8
-  resolution: "@rnx-kit/align-deps@npm:3.0.8"
+"@rnx-kit/align-deps@npm:^3.0.0, @rnx-kit/align-deps@npm:^3.1.0":
+  version: 3.2.0
+  resolution: "@rnx-kit/align-deps@npm:3.2.0"
   bin:
     rnx-align-deps: lib/index.js
-  checksum: 10c0/88cd853eb96b4a9121af6870a1a166b93bd34c72581b7b539fba59858305965cf70253e5408097f80a48d6f1f4ff2cab07af3953566d9aa0d1ac873ccf5eded4
+  checksum: 10c0/7eb2092e5815520825c9715b0591b99ef79aa4703aeb6bd0362f92e85524f5c252eae945d4ed7447f2e1dc2ca433f6209c26fd01516b5a614ad1369aadae8881
   languageName: node
   linkType: hard
 
@@ -6884,10 +6884,10 @@ __metadata:
   linkType: hard
 
 "@rnx-kit/cli@npm:^0.18.9":
-  version: 0.18.9
-  resolution: "@rnx-kit/cli@npm:0.18.9"
+  version: 0.18.12
+  resolution: "@rnx-kit/cli@npm:0.18.12"
   dependencies:
-    "@rnx-kit/align-deps": "npm:^3.0.6"
+    "@rnx-kit/align-deps": "npm:^3.1.0"
     "@rnx-kit/config": "npm:^0.7.0"
     "@rnx-kit/console": "npm:^2.0.0"
     "@rnx-kit/metro-plugin-cyclic-dependencies-detector": "npm:^2.0.0"
@@ -6897,8 +6897,9 @@ __metadata:
     "@rnx-kit/metro-serializer-esbuild": "npm:^0.2.1"
     "@rnx-kit/metro-service": "npm:^4.0.2"
     "@rnx-kit/third-party-notices": "npm:^2.0.0"
-    "@rnx-kit/tools-android": "npm:^0.2.0"
+    "@rnx-kit/tools-android": "npm:^0.2.1"
     "@rnx-kit/tools-apple": "npm:^0.2.1"
+    "@rnx-kit/tools-filesystem": "npm:^0.1.0"
     "@rnx-kit/tools-language": "npm:^3.0.0"
     "@rnx-kit/tools-node": "npm:^3.0.0"
     "@rnx-kit/tools-react-native": "npm:^2.0.3"
@@ -6915,7 +6916,7 @@ __metadata:
       optional: true
   bin:
     rnx-cli: bin/rnx-cli.cjs
-  checksum: 10c0/8014a7bba73dbacfa00c5b320699625ead4e7d637b9c817344e4a4a98b35767f6a55a34992098c8c64cf12d2c5164c8ceb5842fd52d7e76a7731b9fb9c0163eb
+  checksum: 10c0/bb72343173e7fb8237976c848f910ae70af267e0d0f2e7531c3514d9314ecaee075dd5d0024c891ae80becab4422adbc9ae0c0ba88670215ebcb4e18275812a7
   languageName: node
   linkType: hard
 
@@ -7040,19 +7041,19 @@ __metadata:
   linkType: hard
 
 "@rnx-kit/metro-resolver-symlinks@npm:^0.2.5":
-  version: 0.2.5
-  resolution: "@rnx-kit/metro-resolver-symlinks@npm:0.2.5"
+  version: 0.2.6
+  resolution: "@rnx-kit/metro-resolver-symlinks@npm:0.2.6"
   dependencies:
     "@rnx-kit/console": "npm:^2.0.0"
     "@rnx-kit/tools-node": "npm:^3.0.0"
     "@rnx-kit/tools-react-native": "npm:^2.2.0"
     enhanced-resolve: "npm:^5.8.3"
   peerDependencies:
-    oxc-resolver: ^9.0.0
+    oxc-resolver: ^11.0.0
   peerDependenciesMeta:
     oxc-resolver:
       optional: true
-  checksum: 10c0/ab2a7d2e5a8278ba83575afc466eb9ab1fc90aa9845d5a1dcabf693cac85ce555f4ff162740fcf73cc7d553cd0060237f9cb323feced5adf4b5d266bf415479f
+  checksum: 10c0/eec12f0cb0c169540dd4ba9d23e454ef536bff2e3b12b79d71b38379d96c69c553a386c9108540ac74fa67aed53518b33fe74abbe2202615625d02e7dfbeb763
   languageName: node
   linkType: hard
 
@@ -7135,12 +7136,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rnx-kit/tools-android@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@rnx-kit/tools-android@npm:0.2.0"
+"@rnx-kit/tools-android@npm:^0.2.1":
+  version: 0.2.1
+  resolution: "@rnx-kit/tools-android@npm:0.2.1"
   dependencies:
     "@rnx-kit/tools-shell": "npm:^0.2.0"
-  checksum: 10c0/112844ba10b8efdd6ba05d5a626aca1a0f319112a1ec54cdedf9d2c1c51ac424fe728575a6f457a2dbb5a1174b5e47d32a1afbd7feb08f05814ff1dc12c40f60
+  checksum: 10c0/63ec0ffb0325b3dd541b80052ad17401084132daa7812613057e445c0431741447046ea6356d237530167ce6383d51dfe56b82b5672aa83ce3523c027a941fcf
   languageName: node
   linkType: hard
 
@@ -7151,6 +7152,13 @@ __metadata:
     "@rnx-kit/tools-shell": "npm:^0.2.0"
     fast-xml-parser: "npm:^4.0.0"
   checksum: 10c0/dc587048484d3087a481840f96b467f70e6202b7c83217ed8b16b1454def2bd56e862111912eaa0679aafea8a7ff87fbe3e419d6ee75ac4cced7ef8f54699def
+  languageName: node
+  linkType: hard
+
+"@rnx-kit/tools-filesystem@npm:^0.1.0":
+  version: 0.1.2
+  resolution: "@rnx-kit/tools-filesystem@npm:0.1.2"
+  checksum: 10c0/36c740b611fd7d6f22f0e379e76274f52c1d57c5e6b56dc4caa4d91f9aacb001633ecb0860503a980c621e16fb18326905d3f21a5acda8614b70e35f33c53fb1
   languageName: node
   linkType: hard
 
