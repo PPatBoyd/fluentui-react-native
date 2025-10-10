@@ -16005,8 +16005,8 @@ __metadata:
   linkType: hard
 
 "lage@npm:^2.0.0":
-  version: 2.14.6
-  resolution: "lage@npm:2.14.6"
+  version: 2.14.14
+  resolution: "lage@npm:2.14.14"
   dependencies:
     fsevents: "npm:~2.3.2"
     glob-hasher: "npm:^1.4.2"
@@ -16016,7 +16016,7 @@ __metadata:
   bin:
     lage: dist/lage.js
     lage-server: dist/lage-server.js
-  checksum: 10c0/a82eea9da0af944c20faa3eb010f396e7780e958dd57710423442af3a161415d229143aa227d3f251d67ae1709774324809ca46df4832dcdadfa499dcbf28683
+  checksum: 10c0/68f7b143e4d36108511dc7c35c9693520dba6c4a9e43294229aa7ae749a3329a2f01b5f254eb8b12dcc30207ef8fc9fea318102b4fa6fa774b04f4ca9c6e83a1
   languageName: node
   linkType: hard
 
