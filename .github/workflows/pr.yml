@@ -19,12 +19,12 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           node-version: 22
 
@@ -43,12 +43,12 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           node-version: 22
 
@@ -93,7 +93,7 @@ jobs:
 
       - name: Upload bundle analysis
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: bundle-size-analysis
           path: apps/bundle-size/dist/bundle-size
@@ -106,10 +106,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: android
           node-version: 22
@@ -136,10 +136,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: macos
           node-version: 22
@@ -178,7 +178,7 @@ jobs:
 
       - name: Upload E2E macOS artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: E2E_macos_Dump
           path: |
@@ -191,10 +191,10 @@ jobs:
     timeout-minutes: 40
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: macos
           node-version: 22
@@ -230,7 +230,7 @@ jobs:
 
       - name: Upload macOS Storybook artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: Storybook_macos_Dump
           path: |
@@ -243,10 +243,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: ios
           node-version: 22
@@ -288,12 +288,12 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 5
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: windows
           node-version: 22
@@ -341,7 +341,7 @@ jobs:
 
       - name: Upload E2E Windows artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: E2E_RNW_Dump
           path: |
@@ -355,12 +355,12 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 5
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: windows
           node-version: 22
@@ -404,7 +404,7 @@ jobs:
 
       - name: Upload Windows Storybook artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: Storybook_windows_Dump
           path: |
@@ -420,10 +420,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: windows
           node-version: 22
@@ -455,7 +455,7 @@ jobs:
 
       - name: Upload E2E Win32 artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: E2E_win32_Dump
           path: |
@@ -468,10 +468,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           platform: windows
           node-version: 22
@@ -495,7 +495,7 @@ jobs:
 
       - name: Upload Win32 Storybook artifacts
         if: ${{ always() }}
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: Storybook_win32_Dump
           path: |
@@ -513,13 +513,13 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           filter: blob:none
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '22'
           cache: 'yarn'
@@ -541,10 +541,10 @@ jobs:
       has-tarballs: ${{ steps.check.outputs.has-tarballs }}
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           node-version: 22
 
@@ -569,7 +569,7 @@ jobs:
 
       - name: Upload packed tarballs
         if: steps.check.outputs.has-tarballs == 'true'
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: packed-tarballs-dry-run
           path: _packed/
@@ -580,10 +580,10 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6.1.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Set up toolchain
-        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@1230975885a9e5d3a2ad58b1483f80b09cec04f2 # 5.2.3
+        uses: microsoft/react-native-test-app/.github/actions/setup-toolchain@35825d75adec302cf11ab1b7cf8a169c2499ea3d # 5.4.12
         with:
           node-version: 22
 
